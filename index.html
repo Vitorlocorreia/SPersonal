@@ -135,11 +135,7 @@
               <li>Suporte por WhatsApp</li>
               <li>Avaliação física inicial</li>
             </ul>
-
-            <!-- Preço Dinâmico -->
             <div class="h2 text-primary mb-4" id="precoBasico">R$ 99,90/mês</div>
-
-            <!-- Escolha da forma de pagamento -->
             <div class="mb-3">
               <select class="form-select text-center" id="formaBasico">
                 <option value="">Forma de pagamento</option>
@@ -148,14 +144,9 @@
                 <option value="boleto">Boleto</option>
               </select>
             </div>
-
-            <!-- Cupom -->
-            <input type="text" id="cupomBasico" class="form-control mb-3 text-center"
-              placeholder="Tem um cupom? (opcional)" />
-
-            <button class="btn btn-primary btn-lg w-100" onclick="comprar('basico')">
-              Comprar agora
-            </button>
+            <input type="text" id="cupomBasico" class="form-control mb-1 text-center" placeholder="Tem um cupom? (opcional)" />
+            <div id="msgCupomBasico" class="text-success mb-3" style="display:none;"></div>
+            <button class="btn btn-primary btn-lg w-100" onclick="comprar('basico')">Comprar agora</button>
           </div>
         </div>
       </div>
@@ -171,9 +162,7 @@
               <li>Consultas de vídeo mensais</li>
               <li>Ajustes de treino semanais</li>
             </ul>
-
             <div class="h2 text-primary mb-4" id="precoInter">R$ 149,90/mês</div>
-
             <div class="mb-3">
               <select class="form-select text-center" id="formaInter">
                 <option value="">Forma de pagamento</option>
@@ -182,13 +171,9 @@
                 <option value="boleto">Boleto</option>
               </select>
             </div>
-
-            <input type="text" id="cupomInter" class="form-control mb-3 text-center"
-              placeholder="Tem um cupom? (opcional)" />
-
-            <button class="btn btn-primary btn-lg w-100" onclick="comprar('inter')">
-              Comprar agora
-            </button>
+            <input type="text" id="cupomInter" class="form-control mb-1 text-center" placeholder="Tem um cupom? (opcional)" />
+            <div id="msgCupomInter" class="text-success mb-3" style="display:none;"></div>
+            <button class="btn btn-primary btn-lg w-100" onclick="comprar('inter')">Comprar agora</button>
           </div>
         </div>
       </div>
@@ -204,9 +189,7 @@
               <li>Plano alimentar personalizado</li>
               <li>Atendimento prioritário</li>
             </ul>
-
             <div class="h2 text-primary mb-4" id="precoPrem">R$ 199,90/mês</div>
-
             <div class="mb-3">
               <select class="form-select text-center" id="formaPrem">
                 <option value="">Forma de pagamento</option>
@@ -215,13 +198,9 @@
                 <option value="boleto">Boleto</option>
               </select>
             </div>
-
-            <input type="text" id="cupomPrem" class="form-control mb-3 text-center"
-              placeholder="Tem um cupom? (opcional)" />
-
-            <button class="btn btn-primary btn-lg w-100" onclick="comprar('prem')">
-              Comprar agora
-            </button>
+            <input type="text" id="cupomPrem" class="form-control mb-1 text-center" placeholder="Tem um cupom? (opcional)" />
+            <div id="msgCupomPrem" class="text-success mb-3" style="display:none;"></div>
+            <button class="btn btn-primary btn-lg w-100" onclick="comprar('prem')">Comprar agora</button>
           </div>
         </div>
       </div>
@@ -230,82 +209,93 @@
   </div>
 </section>
 
-<!-- SCRIPT -->
 <script>
+// Preços por forma de pagamento
 const precos = {
   basico: { pix: 89.90, cartao: 99.90, boleto: 104.90 },
   inter: { pix: 134.90, cartao: 149.90, boleto: 154.90 },
   prem: { pix: 179.90, cartao: 199.90, boleto: 209.90 }
 };
 
+// Desconto de cupons
+const descontoCupons = { FIT10: 0.10 };
+
+// Links de pagamento
 const links = {
   basico: {
     pix: "https://mpago.la/1BZC3tm",
     cartao: "https://mpago.la/1HypZNQ",
-    boleto: "https://mpago.la/linkBasicoBoleto"
+    boleto: "https://mpago.la/linkBasicoBoleto",
+    pix_FIT10: "https://mpago.la/linkBasicoPixFit10",
+    cartao_FIT10: "https://mpago.la/linkBasicoCartaoFit10",
+    boleto_FIT10: "https://mpago.la/linkBasicoBoletoFit10"
   },
   inter: {
     pix: "https://mpago.la/linkInterPix",
     cartao: "https://mpago.la/linkInterCartao",
-    boleto: "https://mpago.la/linkInterBoleto"
+    boleto: "https://mpago.la/linkInterBoleto",
+    pix_FIT10: "https://mpago.la/linkInterPixFit10",
+    cartao_FIT10: "https://mpago.la/linkInterCartaoFit10",
+    boleto_FIT10: "https://mpago.la/linkInterBoletoFit10"
   },
   prem: {
     pix: "https://mpago.la/linkPremPix",
     cartao: "https://mpago.la/linkPremCartao",
-    boleto: "https://mpago.la/linkPremBoleto"
+    boleto: "https://mpago.la/linkPremBoleto",
+    pix_FIT10: "https://mpago.la/linkPremPixFit10",
+    cartao_FIT10: "https://mpago.la/linkPremCartaoFit10",
+    boleto_FIT10: "https://mpago.la/linkPremBoletoFit10"
   }
 };
 
-// Atualiza preço ao mudar forma de pagamento
+// Função para atualizar preço e mensagem de cupom
 function atualizarPreco(plano) {
-  let forma, precoEl;
-  if (plano === "basico") {
-    forma = document.getElementById("formaBasico").value;
-    precoEl = document.getElementById("precoBasico");
-  } else if (plano === "inter") {
-    forma = document.getElementById("formaInter").value;
-    precoEl = document.getElementById("precoInter");
-  } else if (plano === "prem") {
-    forma = document.getElementById("formaPrem").value;
-    precoEl = document.getElementById("precoPrem");
-  }
+  let forma = document.getElementById(`forma${plano.charAt(0).toUpperCase()+plano.slice(1)}`).value;
+  let cupom = document.getElementById(`cupom${plano.charAt(0).toUpperCase()+plano.slice(1)}`).value.trim().toUpperCase();
+  let precoEl = document.getElementById(`preco${plano.charAt(0).toUpperCase()+plano.slice(1)}`);
+  let msgEl = document.getElementById(`msgCupom${plano.charAt(0).toUpperCase()+plano.slice(1)}`);
+
   if (!forma) return;
-  precoEl.innerText = `R$ ${precos[plano][forma].toFixed(2)}/mês`;
+
+  let precoFinal = precos[plano][forma];
+
+  if (descontoCupons[cupom]) {
+    precoFinal = precoFinal * (1 - descontoCupons[cupom]);
+    msgEl.style.display = "block";
+    msgEl.innerText = `✅ Cupom "${cupom}" aplicado! ${descontoCupons[cupom]*100}% de desconto.`;
+  } else {
+    msgEl.style.display = "none";
+  }
+
+  precoEl.innerText = `R$ ${precoFinal.toFixed(2)}/mês`;
 }
 
-// Listeners dos selects
-document.getElementById("formaBasico").addEventListener("change", () => atualizarPreco("basico"));
-document.getElementById("formaInter").addEventListener("change", () => atualizarPreco("inter"));
-document.getElementById("formaPrem").addEventListener("change", () => atualizarPreco("prem"));
+// Listeners para atualizar preço ao mudar forma de pagamento ou cupom
+["basico","inter","prem"].forEach(plano => {
+  document.getElementById(`forma${plano.charAt(0).toUpperCase()+plano.slice(1)}`).addEventListener("change", () => atualizarPreco(plano));
+  document.getElementById(`cupom${plano.charAt(0).toUpperCase()+plano.slice(1)}`).addEventListener("input", () => atualizarPreco(plano));
+});
 
-// Função de compra com cupom
+// Função de compra
 function comprar(plano) {
-  let forma, cupom;
-  if (plano === "basico") {
-    forma = document.getElementById("formaBasico").value;
-    cupom = document.getElementById("cupomBasico").value.trim().toUpperCase();
-  } else if (plano === "inter") {
-    forma = document.getElementById("formaInter").value;
-    cupom = document.getElementById("cupomInter").value.trim().toUpperCase();
-  } else if (plano === "prem") {
-    forma = document.getElementById("formaPrem").value;
-    cupom = document.getElementById("cupomPrem").value.trim().toUpperCase();
-  }
+  let forma = document.getElementById(`forma${plano.charAt(0).toUpperCase()+plano.slice(1)}`).value;
+  let cupom = document.getElementById(`cupom${plano.charAt(0).toUpperCase()+plano.slice(1)}`).value.trim().toUpperCase();
 
   if (!forma) {
     alert("Selecione uma forma de pagamento!");
     return;
   }
 
-  // Exemplo simples de cupom
-  if (cupom === "FIT10") {
-    alert("✅ Cupom aplicado: 10% de desconto!");
-    // Aqui você pode redirecionar para um link específico com desconto se quiser
+  let linkPagamento = links[plano][forma];
+  if (descontoCupons[cupom]) {
+    linkPagamento = links[plano][`${forma}_${cupom}`];
   }
 
-  window.location.href = links[plano][forma];
+  window.location.href = linkPagamento;
 }
 </script>
+
+
 
 
     

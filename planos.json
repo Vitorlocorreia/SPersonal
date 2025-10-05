@@ -1,0 +1,38 @@
+{
+  "basico": {
+    "precos": {"pix": 89.9, "cartao": 99.9, "boleto": 104.9},
+    "links": {
+      "pix": "https://mpago.la/1BZC3tm",
+      "cartao": "https://mpago.la/1HypZNQ",
+      "boleto": "https://mpago.la/linkBasicoBoleto",
+      "pix_FIT10": "https://mpago.la/linkBasicoPixFit10",
+      "cartao_FIT10": "https://mpago.la/linkBasicoCartaoFit10",
+      "boleto_FIT10": "https://mpago.la/linkBasicoBoletoFit10"
+    }
+  },
+  "inter": {
+    "precos": {"pix": 134.9, "cartao": 149.9, "boleto": 154.9},
+    "links": {
+      "pix": "https://mpago.la/linkInterPix",
+      "cartao": "https://mpago.la/linkInterCartao",
+      "boleto": "https://mpago.la/linkInterBoleto",
+      "pix_FIT10": "https://mpago.la/linkInterPixFit10",
+      "cartao_FIT10": "https://mpago.la/linkInterCartaoFit10",
+      "boleto_FIT10": "https://mpago.la/linkInterBoletoFit10"
+    }
+  },
+  "prem": {
+    "precos": {"pix": 179.9, "cartao": 199.9, "boleto": 209.9},
+    "links": {
+      "pix": "https://mpago.la/linkPremPix",
+      "cartao": "https://mpago.la/linkPremCartao",
+      "boleto": "https://mpago.la/linkPremBoleto",
+      "pix_FIT10": "https://mpago.la/linkPremPixFit10",
+      "cartao_FIT10": "https://mpago.la/linkPremCartaoFit10",
+      "boleto_FIT10": "https://mpago.la/linkPremBoletoFit10"
+    }
+  },
+  "cupons": {
+    "FIT10": 0.10
+  }
+}
