@@ -136,7 +136,8 @@
               <li>Avaliação física inicial</li>
             </ul>
 
-            <div class="h2 text-primary mb-4">R$ 99,90/mês</div>
+            <!-- Preço Dinâmico -->
+            <div class="h2 text-primary mb-4" id="precoBasico">R$ 99,90/mês</div>
 
             <!-- Escolha da forma de pagamento -->
             <div class="mb-3">
@@ -171,7 +172,7 @@
               <li>Ajustes de treino semanais</li>
             </ul>
 
-            <div class="h2 text-primary mb-4">R$ 149,90/mês</div>
+            <div class="h2 text-primary mb-4" id="precoInter">R$ 149,90/mês</div>
 
             <div class="mb-3">
               <select class="form-select text-center" id="formaInter">
@@ -204,7 +205,7 @@
               <li>Atendimento prioritário</li>
             </ul>
 
-            <div class="h2 text-primary mb-4">R$ 199,90/mês</div>
+            <div class="h2 text-primary mb-4" id="precoPrem">R$ 199,90/mês</div>
 
             <div class="mb-3">
               <select class="form-select text-center" id="formaPrem">
@@ -224,12 +225,60 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- SCRIPT -->
 <script>
+const precos = {
+  basico: { pix: 89.90, cartao: 99.90, boleto: 104.90 },
+  inter: { pix: 134.90, cartao: 149.90, boleto: 154.90 },
+  prem: { pix: 179.90, cartao: 199.90, boleto: 209.90 }
+};
+
+const links = {
+  basico: {
+    pix: "https://mpago.la/1BZC3tm",
+    cartao: "https://mpago.la/1HypZNQ",
+    boleto: "https://mpago.la/linkBasicoBoleto"
+  },
+  inter: {
+    pix: "https://mpago.la/linkInterPix",
+    cartao: "https://mpago.la/linkInterCartao",
+    boleto: "https://mpago.la/linkInterBoleto"
+  },
+  prem: {
+    pix: "https://mpago.la/linkPremPix",
+    cartao: "https://mpago.la/linkPremCartao",
+    boleto: "https://mpago.la/linkPremBoleto"
+  }
+};
+
+// Atualiza preço ao mudar forma de pagamento
+function atualizarPreco(plano) {
+  let forma, precoEl;
+  if (plano === "basico") {
+    forma = document.getElementById("formaBasico").value;
+    precoEl = document.getElementById("precoBasico");
+  } else if (plano === "inter") {
+    forma = document.getElementById("formaInter").value;
+    precoEl = document.getElementById("precoInter");
+  } else if (plano === "prem") {
+    forma = document.getElementById("formaPrem").value;
+    precoEl = document.getElementById("precoPrem");
+  }
+  if (!forma) return;
+  precoEl.innerText = `R$ ${precos[plano][forma].toFixed(2)}/mês`;
+}
+
+// Listeners dos selects
+document.getElementById("formaBasico").addEventListener("change", () => atualizarPreco("basico"));
+document.getElementById("formaInter").addEventListener("change", () => atualizarPreco("inter"));
+document.getElementById("formaPrem").addEventListener("change", () => atualizarPreco("prem"));
+
+// Função de compra com cupom
 function comprar(plano) {
   let forma, cupom;
   if (plano === "basico") {
@@ -248,34 +297,13 @@ function comprar(plano) {
     return;
   }
 
-  // 🔗 Seus links de pagamento
-  const links = {
-    basico: {
-      pix: "https://mpago.la/1BZC3tm",
-      cartao: "https://mpago.la/1HypZNQ",
-      boleto: "https://mpago.la/linkBasicoBoleto",
-    },
-    inter: {
-      pix: "https://mpago.la/linkInterPix",
-      cartao: "https://mpago.la/linkInterCartao",
-      boleto: "https://mpago.la/linkInterBoleto",
-    },
-    prem: {
-      pix: "https://mpago.la/linkPremPix",
-      cartao: "https://mpago.la/linkPremCartao",
-      boleto: "https://mpago.la/linkPremBoleto",
-    },
-  };
-
-  let linkPagamento = links[plano][forma];
-
-  // 🏷️ Aplicação de cupom simples (exemplo)
+  // Exemplo simples de cupom
   if (cupom === "FIT10") {
     alert("✅ Cupom aplicado: 10% de desconto!");
-    // Você pode redirecionar para outro link com desconto aqui, se quiser.
+    // Aqui você pode redirecionar para um link específico com desconto se quiser
   }
 
-  window.location.href = linkPagamento;
+  window.location.href = links[plano][forma];
 }
 </script>
 
