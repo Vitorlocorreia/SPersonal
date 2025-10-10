@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,194 +12,1163 @@
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        /* Cards - Plans */
+        .plan-card {
+            background: linear-gradient(180deg, #1c1c1c, rgba(20, 20, 20, 0.6));
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.28s cubic-bezier(.2, .9, .2, 1), box-shadow 0.28s;
+        }
+
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .plan-badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #0d6efd;
+            font-weight: 700;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .feature {
+            color: #cfcfcf;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-small {
+            font-size: 0.95rem;
+            color: #cfcfcf;
+        }
+        
+    </style>
 </head>
 
 <body id="page-top">
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#page-top">MCorreia Team</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">Sobre mim</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#plans">Planos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Alunos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#signup">Contato</a></li>
-                    
-                </ul>
+    <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="#page-top">MCorreia Team</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#plans">Planos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#alunos">Alunos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#signup">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ======== CSS NAVBAR COM BLUR COMPACTA ======== -->
+<style>
+#mainNav {
+  background: rgba(28,28,28,0.6); /* fundo semi-transparente */
+  backdrop-filter: blur(12px); /* efeito blur */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 0.80rem 0; /* navbar compacta */
+  z-index: 999;
+  transition: background 0.3s ease, padding 0.3s ease;
+  font-size: 0.9rem; /* texto menor */
+}
+
+#mainNav .navbar-brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+#mainNav .navbar-brand:hover {
+  color: #0d6efd;
+}
+
+#mainNav .nav-link {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+  margin-left: 0.8rem;
+  transition: color 0.3s ease;
+  padding: 0.25rem 0.5rem;
+}
+
+#mainNav .nav-link:hover {
+  color: #0d6efd;
+}
+
+#mainNav .navbar-toggler {
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+#mainNav .navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Navbar colapsada em telas menores */
+@media (max-width: 992px) {
+  #mainNav .navbar-nav {
+    background: rgba(28,28,28,0.95);
+    padding: 0.8rem;
+    border-radius: 10px;
+  }
+
+  #mainNav .nav-link {
+    margin: 0.4rem 0;
+  }
+}
+</style>
+
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container-fluid p-0">
+    <div class="row g-0 align-items-center">
+
+      <!-- Texto à esquerda -->
+      <div class="col-lg-6 hero-content text-white d-flex flex-column justify-content-center px-5">
+        <h1 class="hero-title display-4 fw-bold mb-3 reveal" style="letter-spacing: 2px;">NOME DO TIME</h1>
+        <p class="hero-lead mb-4 reveal">Frase de impacto que motive seus alunos.</p>
+        <div class="d-flex gap-2 reveal">
+          <a class="btn btn-primary btn-lg" href="#plans">Comece Agora</a>
+          <a class="btn btn-outline-light btn-lg" href="#alunos">Ver Resultados</a>
+        </div>
+      </div>
+
+      <!-- Imagem à direita com vinheta -->
+      <div class="col-lg-6 hero-image reveal"></div>
+
+    </div>
+  </div>
+</header>
+
+<style>
+.hero {
+  min-height: 90vh;
+  overflow: hidden;
+  background-color: #000;
+}
+
+/* Imagem com vinheta preta ao redor */
+.hero-image {
+  position: relative;
+  background-image: url('assets/img/Foto.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 90vh;
+  z-index: 1;
+}
+
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0) 50%,      /* centro visível */
+    rgba(0,0,0,0.6) 70%,    /* bordas mais escuras */
+    rgba(0,0,0,0.85) 90%,   /* cantos bem escuros */
+    rgba(0,0,0,1) 100%      /* extremidades totalmente pretas */
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Texto */
+.hero-content {
+  min-height: 90vh;
+  background: linear-gradient(to right, #000000 100%, #000000 100%);
+}
+
+/* Fade + deslizamento */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-title {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.hero-lead {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+  .hero-image {
+    display: none;
+  }
+
+  .hero-content {
+    background: linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #1c1c1c 100%);
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+
+    for (let i = 0; i < reveals.length; i++) {
+      const windowHeight = window.innerHeight;
+      const elementTop = reveals[i].getBoundingClientRect().top;
+      const revealPoint = 150;
+
+      if (elementTop < windowHeight - revealPoint) {
+        reveals[i].classList.add('active');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll(); // dispara ao carregar para elementos já visíveis
+});
+</script>
+
+
+
+<!-- Sobre -->
+<section class="about-section text-center" id="about" 
+    style="background: linear-gradient(
+        180deg, 
+        #000000 0vh,       /* topo do hero */
+        #0a0a0a 30vh,      /* intermediário */
+        #111111 60vh,      /* mais próximo do Sobre */
+        #1c1c1c 100vh      /* fundo final do Sobre */
+    ); 
+    padding: 80px 0;">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8" data-aos="fade-up">
+                <h2 class="text-white mb-4">QUEM SOU EU</h2>
+                <p class="text-white-50">
+                    [Adicione aqui a sua descrição]
+                </p>
             </div>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <!-- Header -->
-    <header class="masthead">
-        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-            <div class="d-flex justify-content-center">
-                <div class="text-center">
-                    <h1 class="mx-auto my-0 text-uppercase">NOME DO TIME</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Frase de impacto.</h2>
-                    <a class="btn btn-primary" href="#plans">Entre pro time</a>
-                </div>
-            </div>
+
+
+
+
+
+    <!-- ======== SOBRE ======== -->
+<section class="sobre" id="sobre">
+  <h2>Sobre a Consultoria</h2>
+  <p class="descricao">
+    A MCorreia Team oferece uma consultoria completa e personalizada, unindo treino, nutrição e suporte contínuo para transformar o seu estilo de vida com resultados reais.
+  </p>
+
+  <div class="sobre-container">
+    <!-- Card 1 -->
+    <div class="sobre-card">
+      <i class="fas fa-dumbbell"></i>
+      <h4>Treinos Personalizados</h4>
+      <p>Programas de treino exclusivos, adaptados ao seu nível e objetivo.</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="sobre-card">
+      <i class="fas fa-apple-alt"></i>
+      <h4>Nutrição Inteligente</h4>
+      <p>Orientações alimentares práticas para potencializar seus resultados.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="sobre-card">
+      <i class="fas fa-comments"></i>
+      <h4>Suporte Contínuo</h4>
+      <p>Acompanhamento constante via WhatsApp e feedbacks personalizados.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ===== Estilo da seção ===== */
+.sobre {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #1c1c1c 0%, #111 100%);
+}
+
+.sobre h2 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+.descricao {
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto 60px auto;
+  line-height: 1.6;
+}
+
+/* ===== Container dos cards ===== */
+.sobre-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* ===== Cards ===== */
+.sobre-card {
+  background: #222;
+  color: #fff;
+  padding: 30px 20px;
+  border-radius: 15px;
+  width: 250px;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+  transform: scale(0.8) translateY(50px);
+}
+
+.sobre-card i {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #f39c12;
+}
+
+.sobre-card h4 {
+  margin-bottom: 10px;
+}
+
+.sobre-card.aparecer {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  animation: bounceIn 0.8s ease forwards;
+}
+
+/* ===== Animação bounce ===== */
+@keyframes bounceIn {
+  0% { transform: scale(0.8) translateY(50px); }
+  60% { transform: scale(1.05) translateY(-10px); }
+  80% { transform: scale(0.98) translateY(5px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  .sobre-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+
+<script>
+// ===== Scroll animation =====
+const cards = document.querySelectorAll('.sobre-card');
+
+function animarCards() {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  cards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+
+    if(cardTop < triggerBottom) {
+      card.classList.add('aparecer');
+    }
+  });
+}
+
+window.addEventListener('scroll', animarCards);
+window.addEventListener('load', animarCards);
+</script>
+
+<script>
+
+
+
+// Espera o DOM carregar
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.sobre-card');
+
+  function animarCards() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    cards.forEach(card => {
+      const cardTop = card.getBoundingClientRect().top;
+
+      if(cardTop < triggerBottom) {
+        card.classList.add('aparecer');
+      }
+    });
+  }
+
+  // Animar ao scroll
+  window.addEventListener('scroll', animarCards);
+
+  // Animar ao carregar (caso já esteja visível)
+  animarCards();
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.sobre-card');
+
+  function animarCards() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    cards.forEach(card => {
+      const cardTop = card.getBoundingClientRect().top;
+
+      if(cardTop < triggerBottom && cardTop > 0) {
+        card.classList.add('aparecer');
+      } else {
+        card.classList.remove('aparecer');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', animarCards);
+  animarCards();
+});
+</script>
+
+
+
+   <!-- ======== ALUNOS ======== --> 
+<section class="alunos" id="alunos">
+  <h2>Transformações dos Alunos</h2>
+  <div class="alunos-container">
+
+    <!-- Card 1 -->
+    <div class="aluno-card">
+      <div class="carousel">
+        <img src="assets/img/FSiteM.jpg" class="slide active" alt="Frente João Silva">
+        <img src="assets/img/FSiteM.png" class="slide" alt="Costas João Silva">
+        <div class="label">FRENTE</div>
+        <button class="prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="info">
+        <h4>João Silva</h4>
+        <p>-10kg em 3 meses</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="aluno-card">
+      <div class="carousel">
+        <img src="assets/img/maria-frente.jpg" class="slide active" alt="Frente Maria Souza">
+        <img src="assets/img/maria-costas.jpg" class="slide" alt="Costas Maria Souza">
+        <div class="label">FRENTE</div>
+        <button class="prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="info">
+        <h4>Maria Souza</h4>
+        <p>+5kg de massa magra</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======== CSS ======== -->
+<style>
+.alunos {
+  text-align: center;
+  padding: 80px 10%;
+  background: #f9f9f9;
+  overflow: hidden;
+}
+
+.alunos h2 {
+  font-size: 2.4rem;
+  margin-bottom: 50px;
+  color: #222;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: fadeDown 1s ease;
+}
+
+.alunos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+}
+
+/* Card */
+.aluno-card {
+  background: #fff;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 500px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeUp 1s ease;
+}
+
+.aluno-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Carrossel */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  overflow: hidden;
+}
+
+.carousel img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: scale(1.05);
+}
+
+.carousel img.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+/* Label dinâmico */
+.label {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  z-index: 2;
+  letter-spacing: 1px;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Botões */
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  padding: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 3;
+}
+
+.carousel button:hover {
+  background: rgba(255,255,255,0.95);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel .prev { left: 20px; }
+.carousel .next { right: 20px; }
+
+/* Info */
+.info {
+  padding: 25px 20px;
+}
+
+.info h4 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.info p {
+  color: #666;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* Animações */
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(25px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeDown {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .alunos-container { flex-direction: column; align-items: center; }
+  .aluno-card { width: 90%; }
+  .carousel { height: 400px; }
+}
+</style>
+
+<script>
+document.querySelectorAll('.aluno-card').forEach(card => {
+  const slides = card.querySelectorAll('.slide');
+  const label = card.querySelector('.label');
+  let current = 0;
+
+  const updateLabel = () => {
+    label.textContent = current === 0 ? 'FRENTE' : 'COSTAS';
+  }
+
+  const showSlide = index => {
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === index);
+    });
+    current = index;
+    updateLabel();
+  }
+
+  card.querySelector('.prev').addEventListener('click', () => {
+    showSlide(current === 0 ? slides.length - 1 : current - 1);
+  });
+
+  card.querySelector('.next').addEventListener('click', () => {
+    showSlide(current === slides.length - 1 ? 0 : current + 1);
+  });
+
+  // Inicializa o label
+  updateLabel();
+});
+</script>
+
+
+
+<!-- ======== JS ======== -->
+<script>
+document.querySelectorAll('.carousel').forEach(carousel => {
+  const slides = carousel.querySelectorAll('.slide');
+  const label = carousel.querySelector('.label');
+  let current = 0;
+
+  // Função para mostrar a imagem e o texto correto
+  const showSlide = index => {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+
+    // Atualiza o texto do selo
+    label.textContent = index === 0 ? "Antes" : "Depois";
+  };
+
+  // Inicializa o primeiro estado
+  showSlide(current);
+
+  // Eventos de clique
+  carousel.querySelector('.next').addEventListener('click', () => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  });
+
+  carousel.querySelector('.prev').addEventListener('click', () => {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  });
+});
+</script>
+
+<!-- ======== DEPOIMENTOS ======== -->
+<section class="depoimentos" id="depoimentos">
+  <h2>Depoimentos</h2>
+  <p class="descricao">
+    Veja o que nossos alunos dizem sobre a experiência com a consultoria MCorreia Team.
+  </p>
+
+  <div class="depoimentos-container">
+    <!-- Depoimento 1 -->
+    <div class="depoimento-card">
+      <div class="perfil">
+        <img src="https://i.imgur.com/VhYQy6y.jpg" alt="Aluno 1">
+        <div class="info">
+          <h4>Lucas Pereira</h4>
+          <span>Aluno há 6 meses</span>
         </div>
-    </header>
+      </div>
+      <p class="texto">
+        “Com o acompanhamento da MCorreia Team, consegui perder 10kg e ganhar disposição. Os treinos são objetivos e o suporte é sensacional!”
+      </p>
+    </div>
 
-    <!-- Sobre -->
-    <section class="about-section text-center" id="about">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="text-white mb-4">Sobre mim</h2>
-                    <p class="text-white-50">
-                        [Adicione aqui a sua descrição]
-                    </p>
-                </div>
-            </div>
+    <!-- Depoimento 2 -->
+    <div class="depoimento-card">
+      <div class="perfil">
+        <img src="https://i.imgur.com/vZo4KfU.jpg" alt="Aluna 2">
+        <div class="info">
+          <h4>Ana Beatriz</h4>
+          <span>Aluna há 1 ano</span>
         </div>
-    </section>
+      </div>
+      <p class="texto">
+        “A metodologia é diferenciada. O acompanhamento me manteve motivada e finalmente consegui resultados duradouros!”
+      </p>
+    </div>
 
-    <!-- Projects-->
-        <section class="projects-section bg-light" id="projects">
-            <div class="container px-4 px-lg-5">
-                <!-- Featured Project Row-->
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Shoreline</h4>
-                            <p class="text-black-50 mb-0">...........</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project One Row-->
-                <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/bg-masthead.jpg" alt="......" /></div>
-                    <div class="col-lg-6">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white">?????y</h4>
-                                    <p class="mb-0 text-white-50">?????????</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Two Row-->
-                <div class="row gx-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/bg-masthead.jpg" alt="..." /></div>
-                    <div class="col-lg-6 order-lg-first">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">??????</h4>
-                                    <p class="mb-0 text-white-50">????????????</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        
-
-
-
-
+    <!-- Depoimento 3 -->
+    <div class="depoimento-card">
+      <div class="perfil">
+        <img src="https://i.imgur.com/FQX5ZpW.jpg" alt="Aluno 3">
+        <div class="info">
+          <h4>Rafael Gomes</h4>
+          <span>Aluno há 8 meses</span>
+        </div>
+      </div>
+      <p class="texto">
+        “Os treinos são adaptados à minha rotina. O suporte e a atenção do coach fazem toda a diferença no processo.”
+      </p>
+    </div>
+  </div>
+</section>
 
 
     <!-- Planos -->
 <section class="planos-section text-center" id="plans">
+    <div class="container px-4 px-lg-5">
+        <h2 class="text-white mb-4">Escolha o seu plano</h2>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+
+            <!-- Plano Mensal -->
+            <div class="col-lg-4 mb-5">
+                <div class="plan-card">
+                    <h4 class="text-uppercase mt-3 mb-3">Mensal</h4>
+                    <ul class="list-unstyled mb-4">
+                        <li class="feature">Fichas de treino personalizadas</li>
+                        <li class="feature">Suporte por WhatsApp</li>
+                        <li class="feature">Avaliação física inicial</li>
+                    </ul>
+                    <div class="price" id="precoMensal">R$ 99,90/mês</div>
+                    <div class="mb-3">
+                        <select class="form-select text-center" id="formaMensal">
+                            <option value="">Forma de pagamento</option>
+                            <option value="pix">PIX (10% off)</option>
+                            <option value="cartao">Cartão</option>
+                            <option value="boleto">Boleto</option>
+                        </select>
+                    </div>
+                    <input type="text" id="cupomMensal" class="form-control mb-3 text-center" placeholder="Tem um cupom? (opcional)" />
+                    <button class="btn btn-primary w-100" onclick="comprar('mensal')">Comprar agora</button>
+                    <div id="msgCupomMensal" class="text-success mt-2" style="display:none;"></div>
+                </div>
+            </div>
+
+            <!-- Plano Semestral -->
+            <div class="col-lg-4 mb-5">
+                <div class="plan-card">
+                    <h4 class="text-uppercase mt-3 mb-3">Semestral</h4>
+                    <ul class="list-unstyled mb-4">
+                        <li class="feature">Tudo do Plano Mensal</li>
+                        <li class="feature">Consultas de vídeo mensais</li>
+                        <li class="feature">Ajustes de treino semanais</li>
+                    </ul>
+                    <div class="price" id="precoSemestral">R$ 499,90/6 meses</div>
+                    <div class="mb-3">
+                        <select class="form-select text-center" id="formaSemestral">
+                            <option value="">Forma de pagamento</option>
+                            <option value="pix">PIX (10% off)</option>
+                            <option value="cartao">Cartão</option>
+                            <option value="boleto">Boleto</option>
+                        </select>
+                    </div>
+                    <input type="text" id="cupomSemestral" class="form-control mb-3 text-center" placeholder="Tem um cupom? (opcional)" />
+                    <button class="btn btn-primary w-100" onclick="comprar('semestral')">Comprar agora</button>
+                    <div id="msgCupomSemestral" class="text-success mt-2" style="display:none;"></div>
+                </div>
+            </div>
+
+            <!-- Plano Anual -->
+            <div class="col-lg-4 mb-5">
+                <div class="plan-card">
+                    <h4 class="text-uppercase mt-3 mb-3">Anual</h4>
+                    <ul class="list-unstyled mb-4">
+                        <li class="feature">Tudo do Plano Semestral</li>
+                        <li class="feature">Plano alimentar personalizado</li>
+                        <li class="feature">Atendimento prioritário</li>
+                    </ul>
+                    <div class="price" id="precoAnual">R$ 899,90/ano</div>
+                    <div class="mb-3">
+                        <select class="form-select text-center" id="formaAnual">
+                            <option value="">Forma de pagamento</option>
+                            <option value="pix">PIX (10% off)</option>
+                            <option value="cartao">Cartão</option>
+                            <option value="boleto">Boleto</option>
+                        </select>
+                    </div>
+                    <input type="text" id="cupomAnual" class="form-control mb-3 text-center" placeholder="Tem um cupom? (opcional)" />
+                    <button class="btn btn-primary w-100" onclick="comprar('anual')">Comprar agora</button>
+                    <div id="msgCupomAnual" class="text-success mt-2" style="display:none;"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<script>
+    // Preços por forma de pagamento
+    const precos = {
+        mensal: { pix: 89.90, cartao: 99.90, boleto: 104.90 },
+        semestral: { pix: 449.90, cartao: 499.90, boleto: 519.90 },
+        anual: { pix: 809.90, cartao: 899.90, boleto: 939.90 }
+    };
+
+    // Desconto de cupons
+    const descontoCupons = { FIT10: 0.10 };
+
+    // Links de pagamento
+    const links = {
+        mensal: {
+            pix: "https://mpago.la/1BZC3tm",
+            cartao: "https://mpago.la/1HypZNQ",
+            boleto: "https://mpago.la/linkMensalBoleto",
+            pix_FIT10: "https://mpago.la/linkMensalPixFit10",
+            cartao_FIT10: "https://mpago.la/linkMensalCartaoFit10",
+            boleto_FIT10: "https://mpago.la/linkMensalBoletoFit10"
+        },
+        semestral: {
+            pix: "https://mpago.la/linkSemestralPix",
+            cartao: "https://mpago.la/linkSemestralCartao",
+            boleto: "https://mpago.la/linkSemestralBoleto",
+            pix_FIT10: "https://mpago.la/linkSemestralPixFit10",
+            cartao_FIT10: "https://mpago.la/linkSemestralCartaoFit10",
+            boleto_FIT10: "https://mpago.la/linkSemestralBoletoFit10"
+        },
+        anual: {
+            pix: "https://mpago.la/linkAnualPix",
+            cartao: "https://mpago.la/linkAnualCartao",
+            boleto: "https://mpago.la/linkAnualBoleto",
+            pix_FIT10: "https://mpago.la/linkAnualPixFit10",
+            cartao_FIT10: "https://mpago.la/linkAnualCartaoFit10",
+            boleto_FIT10: "https://mpago.la/linkAnualBoletoFit10"
+        }
+    };
+
+    // Função para atualizar preço e mensagem de cupom
+    function atualizarPreco(plano) {
+        let forma = document.getElementById(`forma${plano.charAt(0).toUpperCase() + plano.slice(1)}`).value;
+        let cupom = document.getElementById(`cupom${plano.charAt(0).toUpperCase() + plano.slice(1)}`).value.trim().toUpperCase();
+        let precoEl = document.getElementById(`preco${plano.charAt(0).toUpperCase() + plano.slice(1)}`);
+        let msgEl = document.getElementById(`msgCupom${plano.charAt(0).toUpperCase() + plano.slice(1)}`);
+
+        if (!forma) return;
+
+        let precoFinal = precos[plano][forma];
+
+        if (descontoCupons[cupom]) {
+            precoFinal = precoFinal * (1 - descontoCupons[cupom]);
+            msgEl.style.display = "block";
+            msgEl.innerText = `✅ Cupom "${cupom}" aplicado! ${descontoCupons[cupom] * 100}% de desconto.`;
+        } else {
+            msgEl.style.display = "none";
+        }
+
+        precoEl.innerText = `R$ ${precoFinal.toFixed(2)}` + (plano === 'mensal' ? '/mês' : plano === 'semestral' ? '/6 meses' : '/ano');
+    }
+
+    ["mensal", "semestral", "anual"].forEach(plano => {
+        document.getElementById(`forma${plano.charAt(0).toUpperCase() + plano.slice(1)}`).addEventListener("change", () => atualizarPreco(plano));
+        document.getElementById(`cupom${plano.charAt(0).toUpperCase() + plano.slice(1)}`).addEventListener("input", () => atualizarPreco(plano));
+    });
+
+    function comprar(plano) {
+        let forma = document.getElementById(`forma${plano.charAt(0).toUpperCase() + plano.slice(1)}`).value;
+        let cupom = document.getElementById(`cupom${plano.charAt(0).toUpperCase() + plano.slice(1)}`).value.trim().toUpperCase();
+
+        if (!forma) {
+            alert("Selecione uma forma de pagamento!");
+            return;
+        }
+
+        let linkPagamento = links[plano][forma];
+        if (descontoCupons[cupom]) {
+            linkPagamento = links[plano][`${forma}_${cupom}`];
+        }
+
+        window.location.href = linkPagamento;
+    }
+</script>
+
+
+
+
+<!-- ======== CSS ======== -->
+<style>
+.sobre {
+  text-align: center;
+  padding: 80px 10%;
+  background: #f9f9f9;
+  overflow: hidden;
+}
+
+.sobre h2 {
+  font-size: 2.4rem;
+  margin-bottom: 25px;
+  color: #222;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: fadeDown 1s ease;
+}
+
+.sobre .descricao {
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  animation: fadeIn 1s ease;
+}
+
+.sobre-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.sobre-card {
+  background: #fff;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  width: 320px;
+  padding: 40px 25px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeUp 1s ease;
+}
+
+.sobre-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.sobre-card i {
+  font-size: 2.8rem;
+  color: #ff3c3c;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.sobre-card:hover i {
+  transform: scale(1.1);
+}
+
+.sobre-card h4 {
+  font-size: 1.3rem;
+  color: #222;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.sobre-card p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Reutiliza animações já existentes */
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(25px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeDown {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+</style>
+
+
+
+<!-- ======== CSS ======== -->
+<style>
+.depoimentos {
+  text-align: center;
+  padding: 80px 10%;
+  background: #f9f9f9;
+  overflow: hidden;
+}
+
+.depoimentos h2 {
+  font-size: 2.4rem;
+  margin-bottom: 25px;
+  color: #222;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: fadeDown 1s ease;
+}
+
+.depoimentos .descricao {
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  animation: fadeIn 1s ease;
+}
+
+/* Container */
+.depoimentos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* Card */
+.depoimento-card {
+  background: #fff;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  padding: 40px 30px;
+  max-width: 420px;
+  text-align: left;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeUp 1s ease;
+}
+
+.depoimento-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Perfil */
+.perfil {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.perfil img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 3px solid #ff3c3c;
+}
+
+.perfil .info h4 {
+  font-size: 1.1rem;
+  color: #222;
+  font-weight: 600;
+}
+
+.perfil .info span {
+  font-size: 0.95rem;
+  color: #777;
+}
+
+/* Texto */
+.depoimento-card .texto {
+  font-size: 1rem;
+  color: #555;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Reutiliza animações */
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(25px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeDown {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+</style>
+
+
+
+
+   <!-- ======== CONTACT ======== -->
+<section id="signup" class="contact-section bg-dark text-white py-4">
   <div class="container px-4 px-lg-5">
-    <h2 class="text-white mb-4">Escolha o seu plano</h2>
-    <div class="row gx-4 gx-lg-5">
+    <h2 class="text-center mb-4 section-title">Fale Conosco</h2>
+    <div class="row gy-3 justify-content-center">
 
-      <!-- Plano Básico -->
-      <div class="col-lg-4 mb-5">
-        <div class="card bg-light py-4 h-100 shadow-lg border-0">
-          <div class="card-body">
-            <h4 class="text-uppercase m-0">Plano Básico</h4>
-            <hr class="my-4 mx-auto" />
-            <ul class="list-unstyled text-black-50 mb-4">
-              <li>Fichas de treino personalizadas</li>
-              <li>Suporte por WhatsApp</li>
-              <li>Avaliação física inicial</li>
-            </ul>
-            <div class="h2 text-primary mb-4" id="precoBasico">R$ 99,90/mês</div>
-            <div class="mb-3">
-              <select class="form-select text-center" id="formaBasico">
-                <option value="">Forma de pagamento</option>
-                <option value="pix">PIX (10% off)</option>
-                <option value="cartao">Cartão</option>
-                <option value="boleto">Boleto</option>
-              </select>
-            </div>
-            <input type="text" id="cupomBasico" class="form-control mb-1 text-center" placeholder="Tem um cupom? (opcional)" />
-            <div id="msgCupomBasico" class="text-success mb-3" style="display:none;"></div>
-            <button class="btn btn-primary btn-lg w-100" onclick="comprar('basico')">Comprar agora</button>
-          </div>
+      <!-- Instagram -->
+      <div class="col-md-4">
+        <div class="info-card text-center p-4 rounded shadow-lg bg-secondary bg-opacity-10 wow fadeInUp" data-wow-delay="0.1s">
+          <i class="fab fa-instagram fa-2x text-primary mb-2"></i>
+          <h5 class="mt-2">Instagram</h5>
+          <p class="muted small mb-0">
+            <a class="muted text-white-50" href="https://www.instagram.com/seu_instagram" target="_blank">@seu_instagram</a>
+          </p>
         </div>
       </div>
 
-      <!-- Plano Intermediário -->
-      <div class="col-lg-4 mb-5">
-        <div class="card bg-light py-4 h-100 shadow-lg border-0">
-          <div class="card-body">
-            <h4 class="text-uppercase m-0">Plano Intermediário</h4>
-            <hr class="my-4 mx-auto" />
-            <ul class="list-unstyled text-black-50 mb-4">
-              <li>Tudo do Plano Básico</li>
-              <li>Consultas de vídeo mensais</li>
-              <li>Ajustes de treino semanais</li>
-            </ul>
-            <div class="h2 text-primary mb-4" id="precoInter">R$ 149,90/mês</div>
-            <div class="mb-3">
-              <select class="form-select text-center" id="formaInter">
-                <option value="">Forma de pagamento</option>
-                <option value="pix">PIX (10% off)</option>
-                <option value="cartao">Cartão</option>
-                <option value="boleto">Boleto</option>
-              </select>
-            </div>
-            <input type="text" id="cupomInter" class="form-control mb-1 text-center" placeholder="Tem um cupom? (opcional)" />
-            <div id="msgCupomInter" class="text-success mb-3" style="display:none;"></div>
-            <button class="btn btn-primary btn-lg w-100" onclick="comprar('inter')">Comprar agora</button>
-          </div>
+      <!-- Email -->
+      <div class="col-md-4">
+        <div class="info-card text-center p-4 rounded shadow-lg bg-secondary bg-opacity-10 wow fadeInUp" data-wow-delay="0.2s">
+          <i class="fas fa-envelope fa-2x text-primary mb-2"></i>
+          <h5 class="mt-2">Email</h5>
+          <p class="muted small mb-0">
+            <a class="muted text-white-50" href="mailto:contato@personal.com">contato@personal.com</a>
+          </p>
         </div>
       </div>
 
-      <!-- Plano Premium -->
-      <div class="col-lg-4 mb-5">
-        <div class="card bg-light py-4 h-100 shadow-lg border-0">
-          <div class="card-body">
-            <h4 class="text-uppercase m-0">Plano Premium</h4>
-            <hr class="my-4 mx-auto" />
-            <ul class="list-unstyled text-black-50 mb-4">
-              <li>Tudo do Plano Intermediário</li>
-              <li>Plano alimentar personalizado</li>
-              <li>Atendimento prioritário</li>
-            </ul>
-            <div class="h2 text-primary mb-4" id="precoPrem">R$ 199,90/mês</div>
-            <div class="mb-3">
-              <select class="form-select text-center" id="formaPrem">
-                <option value="">Forma de pagamento</option>
-                <option value="pix">PIX (10% off)</option>
-                <option value="cartao">Cartão</option>
-                <option value="boleto">Boleto</option>
-              </select>
-            </div>
-            <input type="text" id="cupomPrem" class="form-control mb-1 text-center" placeholder="Tem um cupom? (opcional)" />
-            <div id="msgCupomPrem" class="text-success mb-3" style="display:none;"></div>
-            <button class="btn btn-primary btn-lg w-100" onclick="comprar('prem')">Comprar agora</button>
-          </div>
+      <!-- WhatsApp -->
+      <div class="col-md-4">
+        <div class="info-card text-center p-4 rounded shadow-lg bg-secondary bg-opacity-10 wow fadeInUp" data-wow-delay="0.3s">
+          <i class="fab fa-whatsapp fa-2x text-primary mb-2"></i>
+          <h5 class="mt-2">WhatsApp</h5>
+          <p class="muted small mb-0">
+            <a class="muted text-white-50" href="https://wa.me/5581987587092" target="_blank">+55 81 98758-7092</a>
+          </p>
         </div>
       </div>
 
@@ -209,149 +1176,100 @@
   </div>
 </section>
 
+<!-- ======== FOOTER ======== -->
+<footer class="footer text-center text-white-50 py-2 bg-dark wow fadeInUp" data-wow-delay="0.1s">
+  <div class="container">
+    Copyright &copy; Vitor Luiz 2025
+  </div>
+</footer>
+
+<style>
+.contact-section {
+  overflow: hidden;
+}
+
+.contact-section .section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 40px;
+  animation: fadeDown 1s ease;
+}
+
+.info-card {
+  background: rgba(255,255,255,0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  background: rgba(255,255,255,0.1);
+}
+
+.info-card i {
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.info-card:hover i {
+  transform: scale(1.15) rotate(8deg);
+  color: #0d6efd;
+}
+
+.info-card h5 {
+  font-weight: 600;
+  margin-top: 10px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.info-card:hover h5 {
+  color: #0d6efd;
+}
+
+.info-card p a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.info-card p a:hover {
+  color: #0d6efd;
+}
+
+.footer {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeDown {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(25px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@media (max-width: 900px) {
+  .info-card {
+    margin-bottom: 20px;
+  }
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <script>
-// Preços por forma de pagamento
-const precos = {
-  basico: { pix: 89.90, cartao: 99.90, boleto: 104.90 },
-  inter: { pix: 134.90, cartao: 149.90, boleto: 154.90 },
-  prem: { pix: 179.90, cartao: 199.90, boleto: 209.90 }
-};
-
-// Desconto de cupons
-const descontoCupons = { FIT10: 0.10 };
-
-// Links de pagamento
-const links = {
-  basico: {
-    pix: "https://mpago.la/1BZC3tm",
-    cartao: "https://mpago.la/1HypZNQ",
-    boleto: "https://mpago.la/linkBasicoBoleto",
-    pix_FIT10: "https://mpago.la/linkBasicoPixFit10",
-    cartao_FIT10: "https://mpago.la/linkBasicoCartaoFit10",
-    boleto_FIT10: "https://mpago.la/linkBasicoBoletoFit10"
-  },
-  inter: {
-    pix: "https://mpago.la/linkInterPix",
-    cartao: "https://mpago.la/linkInterCartao",
-    boleto: "https://mpago.la/linkInterBoleto",
-    pix_FIT10: "https://mpago.la/linkInterPixFit10",
-    cartao_FIT10: "https://mpago.la/linkInterCartaoFit10",
-    boleto_FIT10: "https://mpago.la/linkInterBoletoFit10"
-  },
-  prem: {
-    pix: "https://mpago.la/linkPremPix",
-    cartao: "https://mpago.la/linkPremCartao",
-    boleto: "https://mpago.la/linkPremBoleto",
-    pix_FIT10: "https://mpago.la/linkPremPixFit10",
-    cartao_FIT10: "https://mpago.la/linkPremCartaoFit10",
-    boleto_FIT10: "https://mpago.la/linkPremBoletoFit10"
-  }
-};
-
-// Função para atualizar preço e mensagem de cupom
-function atualizarPreco(plano) {
-  let forma = document.getElementById(`forma${plano.charAt(0).toUpperCase()+plano.slice(1)}`).value;
-  let cupom = document.getElementById(`cupom${plano.charAt(0).toUpperCase()+plano.slice(1)}`).value.trim().toUpperCase();
-  let precoEl = document.getElementById(`preco${plano.charAt(0).toUpperCase()+plano.slice(1)}`);
-  let msgEl = document.getElementById(`msgCupom${plano.charAt(0).toUpperCase()+plano.slice(1)}`);
-
-  if (!forma) return;
-
-  let precoFinal = precos[plano][forma];
-
-  if (descontoCupons[cupom]) {
-    precoFinal = precoFinal * (1 - descontoCupons[cupom]);
-    msgEl.style.display = "block";
-    msgEl.innerText = `✅ Cupom "${cupom}" aplicado! ${descontoCupons[cupom]*100}% de desconto.`;
-  } else {
-    msgEl.style.display = "none";
-  }
-
-  precoEl.innerText = `R$ ${precoFinal.toFixed(2)}/mês`;
-}
-
-// Listeners para atualizar preço ao mudar forma de pagamento ou cupom
-["basico","inter","prem"].forEach(plano => {
-  document.getElementById(`forma${plano.charAt(0).toUpperCase()+plano.slice(1)}`).addEventListener("change", () => atualizarPreco(plano));
-  document.getElementById(`cupom${plano.charAt(0).toUpperCase()+plano.slice(1)}`).addEventListener("input", () => atualizarPreco(plano));
-});
-
-// Função de compra
-function comprar(plano) {
-  let forma = document.getElementById(`forma${plano.charAt(0).toUpperCase()+plano.slice(1)}`).value;
-  let cupom = document.getElementById(`cupom${plano.charAt(0).toUpperCase()+plano.slice(1)}`).value.trim().toUpperCase();
-
-  if (!forma) {
-    alert("Selecione uma forma de pagamento!");
-    return;
-  }
-
-  let linkPagamento = links[plano][forma];
-  if (descontoCupons[cupom]) {
-    linkPagamento = links[plano][`${forma}_${cupom}`];
-  }
-
-  window.location.href = linkPagamento;
-}
+new WOW().init();
 </script>
 
-
-
-
-    
-
-    <!-- Contato -->
-    <section class="contact-section bg-black" id="signup">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <div class="card py-4 h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-                            <h4 class="text-uppercase m-0">Endereço</h4>
-                            <hr class="my-4 mx-auto" />
-                            <div class="small text-black-50">ACADEMIAS DE RECIFE</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <div class="card py-4 h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-envelope text-primary mb-2"></i>
-                            <h4 class="text-uppercase m-0">Email</h4>
-                            <hr class="my-4 mx-auto" />
-                            <div class="small text-black-50"><a href="#!">O TEU EMAIL</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <div class="card py-4 h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-mobile-alt text-primary mb-2"></i>
-                            <h4 class="text-uppercase m-0">Celular</h4>
-                            <hr class="my-4 mx-auto" />
-                            <div class="small text-black-50">+55 81 98758-7092</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
-
-    <!-- Footer -->
-    <footer class="footer bg-black small text-center text-white-50">
-        <div class="container px-4 px-lg-5">Copyright &copy; Vitor Luiz 2025</div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-    
-
-</body>
-
-</html>
