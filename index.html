@@ -140,20 +140,20 @@
 <!-- HERO -->
 <header class="hero">
   <div class="container-fluid p-0">
-    <div class="row g-0 align-items-center">
+    <div class="row g-0 align-items-center hero-row">
 
-      <!-- Texto à esquerda -->
-      <div class="col-lg-6 hero-content text-white d-flex flex-column justify-content-center px-5">
+      <!-- Texto -->
+      <div class="col-6 col-lg-6 hero-content text-white d-flex flex-column justify-content-center px-3">
         <h1 class="hero-title display-4 fw-bold mb-3 reveal" style="letter-spacing: 2px;">NOME DO TIME</h1>
         <p class="hero-lead mb-4 reveal">Frase de impacto que motive seus alunos.</p>
-        <div class="d-flex gap-2 reveal">
+        <div class="d-flex gap-2 reveal flex-wrap">
           <a class="btn btn-primary btn-lg" href="#plans">Comece Agora</a>
           <a class="btn btn-outline-light btn-lg" href="#alunos">Ver Resultados</a>
         </div>
       </div>
 
-      <!-- Imagem à direita com vinheta -->
-      <div class="col-lg-6 hero-image reveal"></div>
+      <!-- Imagem -->
+      <div class="col-6 col-lg-6 hero-image reveal"></div>
 
     </div>
   </div>
@@ -166,7 +166,6 @@
   background-color: #000;
 }
 
-/* Imagem com vinheta preta ao redor */
 .hero-image {
   position: relative;
   background-image: url('assets/img/Foto.jpg');
@@ -182,22 +181,20 @@
   inset: 0;
   background: radial-gradient(
     circle at center,
-    rgba(0,0,0,0) 50%,      /* centro visível */
-    rgba(0,0,0,0.6) 70%,    /* bordas mais escuras */
-    rgba(0,0,0,0.85) 90%,   /* cantos bem escuros */
-    rgba(0,0,0,1) 100%      /* extremidades totalmente pretas */
+    rgba(0,0,0,0) 50%,      
+    rgba(0,0,0,0.6) 70%,    
+    rgba(0,0,0,0.85) 90%,   
+    rgba(0,0,0,1) 100%     
   );
   pointer-events: none;
   z-index: 2;
 }
 
-/* Texto */
 .hero-content {
   min-height: 90vh;
   background: linear-gradient(to right, #000000 100%, #000000 100%);
 }
 
-/* Fade + deslizamento */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -220,17 +217,21 @@
 
 /* Mobile */
 @media (max-width: 992px) {
-  .hero-image {
-    display: none;
+  .hero-row {
+    flex-wrap: nowrap; /* evita quebrar para baixo */
+  }
+
+  .hero-content, .hero-image {
+    min-height: 70vh; /* ajusta altura para mobile */
   }
 
   .hero-content {
-    background: linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #1c1c1c 100%);
-    text-align: center;
-    padding: 4rem 2rem;
+    padding: 2rem 1rem;
   }
 }
 </style>
+
+
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
