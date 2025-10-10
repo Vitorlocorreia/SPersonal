@@ -11218,3 +11218,15 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Ignorar dark mode do sistema */
+@media (prefers-color-scheme: dark) {
+  html, body, header, section, .hero, #mainNav, .sobre {
+    background-color: unset;      /* mantém seu gradiente/fundo original */
+    color: inherit;               /* mantém cor original do texto */
+  }
+
+  img, video {
+    filter: none;                 /* evita escurecimento de imagens */
+  }
+}
