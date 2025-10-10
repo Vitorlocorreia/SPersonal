@@ -159,6 +159,11 @@ h4, .h4 {
   }
 }
 
+.plan-card h4 {
+    color: #fff; /* branco */
+}
+
+
 h5, .h5 {
   font-size: 1.25rem;
 }
@@ -197,6 +202,7 @@ dl {
   margin-top: 0;
   margin-bottom: 1rem;
 }
+
 
 ol ol,
 ul ul,
@@ -11200,4 +11206,15 @@ body {
 
 .footer {
   padding: 5rem 0;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
